@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Triangle : MonoBehaviour
+public class Sphere : MonoBehaviour
 {
     Vector3[] vertices;
 
     public Material mat;
     void Start()
     {
-        Sphere(3, 100, 10, new(6f, 6f, 6f));
+        DrawSphere(3, 100, 10, new(6f, 6f, 6f));
     }
 
 
-    public void Sphere(float rayon, int parallele, int meridian, Vector3 centre)
+    public void DrawSphere(float rayon, int parallele, int meridian, Vector3 centre)
     {
         if (parallele < 2 || meridian < 3)
         {
@@ -123,4 +123,5 @@ public class Triangle : MonoBehaviour
 
     }
 }
+
 
