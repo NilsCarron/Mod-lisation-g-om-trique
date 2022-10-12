@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static System.Math;
 public class Simplification : MonoBehaviour
 {
     [SerializeField] private Material mat;
@@ -8,33 +10,120 @@ public class Simplification : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 centre = new(6f, 6f, 6f);
-        float rayon = 3f;
-        DrawSimplifiedSphere(centre, rayon, mat, 0.2f); 
+
+
+       Sphere orb1 = new Sphere(  3f, new Vector3(0f, 0f, 0f));
+       Sphere orb2 = new Sphere( 6f, new Vector3(15f, 10f, 10f));
+       Sphere orb3 = new Sphere( 5f, new Vector3(20f, 25f, 35f));
+
+        List<Sphere> listOfSphere = new List<Sphere>();
+        listOfSphere.Add(orb1);
+        listOfSphere.Add(orb2);
+        listOfSphere.Add(orb3);
+
+        DrawSimplifiedSphere(listOfSphere); 
+        
+        
+        
+        
     }
 
-    public void DrawSimplifiedSphere(Vector3 centre, float rayon , Material mat, float arete)
+    public struct Sphere
     {
-        Vector3 coordonneesBox;
-        coordonneesBox = new(0, 0, 0);
-        int tailleBox = (int)Mathf.Floor((rayon) / (arete) +1);
+         public float rayon;
+         public Vector3 position;
 
-        for (int indexZ = -tailleBox - 1; indexZ < tailleBox - 1; indexZ++)
+         public Sphere(float rayon, Vector3 position)
+         {
+             this.position = position;
+             this.rayon = rayon;
+         }
+    }
+
+    public List<Vector3> GetBoxDimensions(List<Sphere> spheres)
+    {
+        Vector3 pointPositif = new Vector3(-int.MaxValue, -int.MaxValue, -int.MaxValue);
+        Vector3 pointNegatif = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
+
+
+
+        foreach (Sphere orb in spheres)
         {
-            for (int indexY = -tailleBox - 1; indexY < tailleBox - 1; indexY++)
+            if (orb.position.x + orb.rayon > pointPositif.x)
+                pointPositif.x = (int)Mathf.Floor(orb.position.x+ orb.rayon) +1;
+            if (orb.position.y+ orb.rayon > pointPositif.y)
+                pointPositif.y = (int)Mathf.Floor(orb.position.y+ orb.rayon) +1;
+            if (orb.position.z+ orb.rayon > pointPositif.z)
+                pointPositif.z = (int)Mathf.Floor(orb.position.z+ orb.rayon) +1;
+            if (orb.position.x - orb.rayon < pointNegatif.x)
+                pointNegatif.x = (int)Mathf.Floor(orb.position.x- orb.rayon) -1;
+            if (orb.position.y - orb.rayon< pointNegatif.y)
+                pointNegatif.y = (int)Mathf.Floor(orb.position.y- orb.rayon) -1;
+            if (orb.position.z - orb.rayon< pointNegatif.z)
+                pointNegatif.z = (int)Mathf.Floor(orb.position.z- orb.rayon) -1;
+            
+        }
+
+        List<Vector3> dimentionsBox = new List<Vector3>();
+        dimentionsBox.Add(pointNegatif);
+        dimentionsBox.Add(pointPositif);
+
+        Debug.Log(pointNegatif);
+        Debug.Log(pointPositif);
+
+
+        return dimentionsBox;
+    }
+  
+       
+    
+    public void DrawSimplifiedSphere(List<Sphere> spheres)
+    {
+
+        List<Vector3> BoxExtremites = new List<Vector3>();
+        BoxExtremites = GetBoxDimensions( spheres);
+        
+        
+        
+        
+        Vector3 coordonneesCentreBox;
+        coordonneesCentreBox = new(0, 0, 0);
+
+      
+        
+        for (int indexZ = (int)BoxExtremites[0].z - 1; indexZ < (int)BoxExtremites[1].z - 1; indexZ++)
+        {
+            for (int indexY = (int)BoxExtremites[0].y - 1; indexY < (int)BoxExtremites[1].y - 1; indexY++)
             {
-                for (int indexX = -tailleBox - 1; indexX < tailleBox - 1; indexX++)
+                for (int indexX = (int)BoxExtremites[0].x - 1; indexX < (int)BoxExtremites[1].x - 1; indexX++)
                 {
-                    coordonneesBox = new(indexX* arete + centre.x , indexY* arete + centre.y , indexZ* arete + centre.z );
-                    if (Vector3.Distance(coordonneesBox, centre) < rayon){
-                        GenerateCube(coordonneesBox, centre, arete, mat);
+                   
+                    foreach (Sphere orb in spheres)
+                    {
+                        coordonneesCentreBox.x = indexX ;
+                        coordonneesCentreBox.y = indexY;
+                        coordonneesCentreBox.z = indexZ ;
+
+                        
+                        CollisionCube(orb, coordonneesCentreBox);
                     }
                 }
             }
         }
 
     }
-    public void GenerateCube(Vector3 coordonneesBox, Vector3 centre, float tailleCube, Material mat) {
+
+    private void CollisionCube(Sphere orb, Vector3 coordonneesCentreBox)
+    {
+        if (Abs(Vector3.Distance(coordonneesCentreBox, orb.position)) < orb.rayon)
+        {
+            GenerateCube(coordonneesCentreBox, 0.5f);
+        }
+        
+        
+    }
+
+    public void GenerateCube(Vector3 coordonneesBox, float tailleCube) {
     
         {
 
