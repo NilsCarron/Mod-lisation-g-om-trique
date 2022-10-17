@@ -311,6 +311,7 @@ GameObject:
   m_Component:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   - component: {fileID: 1065336931}
   - component: {fileID: 1065336930}
   - component: {fileID: 1065336929}
@@ -321,6 +322,8 @@ GameObject:
 =======
 =======
 >>>>>>> parent of 0bde46b (Simplification not working)
+=======
+>>>>>>> parent of 0bde46b (Simplification not working)
   - component: {fileID: 1804111261}
   - component: {fileID: 1804111264}
   - component: {fileID: 1804111263}
@@ -328,10 +331,13 @@ GameObject:
   - component: {fileID: 1804111265}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   - component: {fileID: 1804111266}
 >>>>>>> cbb1553346af07d307ce9b2ed0315d7371cf0f98
 =======
 >>>>>>> parent of cbb1553 (Multiple shpere simplification)
+=======
+>>>>>>> parent of 0bde46b (Simplification not working)
 =======
 >>>>>>> parent of 0bde46b (Simplification not working)
   m_Layer: 0
@@ -341,6 +347,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!114 &1065336925
@@ -448,11 +455,15 @@ MonoBehaviour:
 =======
 --- !u!4 &1804111261
 >>>>>>> parent of 0bde46b (Simplification not working)
+=======
+--- !u!4 &1804111261
+>>>>>>> parent of 0bde46b (Simplification not working)
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 1065336924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -569,6 +580,10 @@ Transform:
   m_GameObject: {fileID: 1804111259}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
 >>>>>>> parent of 0bde46b (Simplification not working)
+=======
+  m_GameObject: {fileID: 1804111259}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+>>>>>>> parent of 0bde46b (Simplification not working)
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -584,6 +599,7 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804111259}
   m_Enabled: 0
+<<<<<<< HEAD
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96e24da8034e86b4a89a2ec54d018650, type: 3}
   m_Name: 
@@ -596,16 +612,22 @@ MonoBehaviour:
 =======
   m_GameObject: {fileID: 1804111259}
   m_Enabled: 0
+=======
+>>>>>>> parent of 0bde46b (Simplification not working)
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abd9c356d3a60c54794a3d6468e65f2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 96e24da8034e86b4a89a2ec54d018650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   file: {fileID: 4900000, guid: c5c3ea660f4bd9a40ab4a204441bf9b5, type: 3}
   mat: {fileID: 10756, guid: 0000000000000000e000000000000000, type: 0}
 >>>>>>> cbb1553346af07d307ce9b2ed0315d7371cf0f98
 =======
 >>>>>>> parent of cbb1553 (Multiple shpere simplification)
 =======
+=======
+  mat: {fileID: 10756, guid: 0000000000000000e000000000000000, type: 0}
+>>>>>>> parent of 0bde46b (Simplification not working)
 --- !u!114 &1804111263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,4 +667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+<<<<<<< HEAD
+>>>>>>> parent of 0bde46b (Simplification not working)
+=======
 >>>>>>> parent of 0bde46b (Simplification not working)
