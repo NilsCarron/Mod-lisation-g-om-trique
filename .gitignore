@@ -58,3 +58,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Assets/Scenes/SampleScene.unity
+Assets/Scripts/Loading.cs
+Assets/Scripts/Simplification.cs
+UserSettings/Layouts/default-2021.dwlt
