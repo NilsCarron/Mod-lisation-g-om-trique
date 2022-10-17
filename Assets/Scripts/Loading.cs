@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< HEAD
 using static System.Math;
+=======
+>>>>>>> cbb1553346af07d307ce9b2ed0315d7371cf0f98
 
 public class Loading : MonoBehaviour
 {
 
     public TextAsset file;
+<<<<<<< HEAD
     public Material mat;
     public Vector3 pointPositif;
     public Vector3 pointNegatif;
@@ -61,6 +65,13 @@ public class Loading : MonoBehaviour
         Vector3 pointPositif = new Vector3(-int.MaxValue, -int.MaxValue, -int.MaxValue);
         Vector3 pointNegatif = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
 
+=======
+    public Material mat;
+
+    private void Start()
+    {
+        
+>>>>>>> cbb1553346af07d307ce9b2ed0315d7371cf0f98
         string content = file.text;
         string[] splitContent = content.Split("\n");
 
@@ -68,8 +79,13 @@ public class Loading : MonoBehaviour
         gameObject.AddComponent<MeshFilter>();
         gameObject.AddComponent<MeshRenderer>();
 
+<<<<<<< HEAD
 
         int[] triangles = new int[int.Parse(infos[1]) * 3];
+=======
+        Vector3[] vertices = new Vector3[int.Parse(infos[0])];
+        int[] triangles = new int[int.Parse(infos[1])*3];
+>>>>>>> cbb1553346af07d307ce9b2ed0315d7371cf0f98
 
         int compteur = 0;
         for (int i = 2; i < int.Parse(infos[0])+2; ++i)
@@ -80,6 +96,7 @@ public class Loading : MonoBehaviour
             float y = float.Parse(coords[1]);
             float z = float.Parse(coords[2]);
             vertices[compteur] = new Vector3(x, y, z);
+<<<<<<< HEAD
 
 
             UpdateBoxDimensions(vertices[compteur]);
@@ -160,6 +177,22 @@ public class Loading : MonoBehaviour
 
             }
         
+=======
+            compteur++;
+        }
+
+        int initialI = int.Parse(infos[0]) + 2;
+        compteur = 0;
+        for (int i = initialI; i < initialI + int.Parse(infos[1]);i++)
+        {
+            string[] coords = splitContent[i].Split(" ");
+            triangles[compteur] = int.Parse(coords[1]);
+            triangles[compteur+1] = int.Parse(coords[2]);
+            triangles[compteur+2] = int.Parse(coords[3]);
+            compteur += 3;
+        }
+
+>>>>>>> cbb1553346af07d307ce9b2ed0315d7371cf0f98
         Mesh msh = new Mesh();
 
         msh.vertices = vertices;
