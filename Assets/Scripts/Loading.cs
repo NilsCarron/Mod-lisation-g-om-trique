@@ -1,16 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
 using static System.Math;
-=======
->>>>>>> cbb1553346af07d307ce9b2ed0315d7371cf0f98
 
 public class Loading : MonoBehaviour
 {
 
     public TextAsset file;
-<<<<<<< HEAD
+
     public Material mat;
     public Vector3 pointPositif;
     public Vector3 pointNegatif;
@@ -48,7 +45,7 @@ public class Loading : MonoBehaviour
     public float getBiggestArete()
     {
 
-        float dist = Abs((pointPositif.x - pointNega  tif.x));
+        float dist = Abs((pointPositif.x - pointNegatif.x));
 
         if (dist < Abs((pointPositif.y - pointNegatif.y)))
             dist = Abs((pointPositif.y- pointNegatif.y));
@@ -60,18 +57,10 @@ public class Loading : MonoBehaviour
 
     }
 
-    private void Start()
-    {
-        Vector3 pointPositif = new Vector3(-int.MaxValue, -int.MaxValue, -int.MaxValue);
-        Vector3 pointNegatif = new Vector3(int.MaxValue, int.MaxValue, int.MaxValue);
-
-=======
-    public Material mat;
 
     private void Start()
     {
-        
->>>>>>> cbb1553346af07d307ce9b2ed0315d7371cf0f98
+
         string content = file.text;
         string[] splitContent = content.Split("\n");
 
@@ -79,16 +68,12 @@ public class Loading : MonoBehaviour
         gameObject.AddComponent<MeshFilter>();
         gameObject.AddComponent<MeshRenderer>();
 
-<<<<<<< HEAD
 
         int[] triangles = new int[int.Parse(infos[1]) * 3];
-=======
         Vector3[] vertices = new Vector3[int.Parse(infos[0])];
-        int[] triangles = new int[int.Parse(infos[1])*3];
->>>>>>> cbb1553346af07d307ce9b2ed0315d7371cf0f98
 
         int compteur = 0;
-        for (int i = 2; i < int.Parse(infos[0])+2; ++i)
+        for (int i = 2; i < int.Parse(infos[0]) + 2; ++i)
         {
             splitContent[i] = splitContent[i].Replace(".", ",");
             string[] coords = splitContent[i].Split(" ");
@@ -96,7 +81,6 @@ public class Loading : MonoBehaviour
             float y = float.Parse(coords[1]);
             float z = float.Parse(coords[2]);
             vertices[compteur] = new Vector3(x, y, z);
-<<<<<<< HEAD
 
 
             UpdateBoxDimensions(vertices[compteur]);
@@ -110,7 +94,7 @@ public class Loading : MonoBehaviour
 
 
 
-        for(int index = 0; index< compteur; ++index)
+        for (int index = 0; index < compteur; ++index)
         {
             vertices[index] = vertices[index] / sizeArete;
         }
@@ -125,33 +109,41 @@ public class Loading : MonoBehaviour
         int initialI = int.Parse(infos[0]) + 2;
         compteur = 0;
         // index * distace cube (longueur boite) / nbCubes
-        Vector3 pointPositifCube = new Vector3.zeros;
-        Vector3 pointNegatifCube = new Vector3.zeros;
+        Vector3 pointPositifCube = Vector3.zero;
+        Vector3 pointNegatifCube = Vector3.zero;
 
 
 
-        for (int indexZ = -nbCubes/2; indexZ <= nbCubes/2; indexZ++)
+        for (int indexZ = -nbCubes / 2; indexZ <= nbCubes / 2; indexZ++)
         {
             for (int indexY = -nbCubes / 2; indexY <= nbCubes / 2; indexY++)
             {
-                for (int indexX = -nbCubes / 2 ; indexX <= nbCubes / 2; indexX++)
+                for (int indexX = -nbCubes / 2; indexX <= nbCubes / 2; indexX++)
                 {
 
-                    pointNegatifCube = (pointNegatif.x + (indexX * (sizeArete / nbCubes)), pointNegatif.y + (indexY * (sizeArete / nbCubes)), pointNegatif.z + (indexZ * (sizeArete / nbCubes)));
-                    pointPositifCube = (pointPositif.x + ((indexX + 1) * (sizeArete / nbCubes)), pointPositif.y + ((indexY + 1) * (sizeArete / nbCubes)), pointPositif.z + ((indexZ + 1) * (sizeArete / nbCubes)));
+                    pointNegatifCube.x = pointNegatif.x + (indexX * (sizeArete / nbCubes));
+                    pointNegatifCube.y = pointNegatif.y + (indexY * (sizeArete / nbCubes));
+                    pointNegatifCube.z = pointNegatif.z + (indexZ * (sizeArete / nbCubes));
 
-                    Vector3 firstVertice = new Vector3.zeros;
-                    foreach (int index = 0; index < vertices.Lenght ; index++)
+                    pointPositifCube.x = pointNegatif.x + ((indexX + 1) * (sizeArete / nbCubes));
+                    pointPositifCube.y = pointNegatif.y + ((indexY + 1) * (sizeArete / nbCubes));
+                    pointPositifCube.z = pointNegatif.z + ((indexZ + 1) * (sizeArete / nbCubes));
+
+
+
+
+                    Vector3 firstVertice = Vector3.zero;
+                    for (int index = 0; index < vertices.Length; index++)
                     {
-                        
-                        if((vertices[index].x <= pointPositifCube.x && vertices[index].y <= pointPositifCube.y && vertices[index].z <= pointPositifCube.z) && (vertices[index].x >= pointNegatifCube.x && vertices[index].y >= pointNegatifCube.y && vertices[index].z >= pointNegatifCube.z))
+
+                        if ((vertices[index].x <= pointPositifCube.x && vertices[index].y <= pointPositifCube.y && vertices[index].z <= pointPositifCube.z) && (vertices[index].x >= pointNegatifCube.x && vertices[index].y >= pointNegatifCube.y && vertices[index].z >= pointNegatifCube.z))
                         {
-                if (firstVertice == Vector.zeros)
-                    firstVertice = vertices[index];
-                else
-                {
-                    vertices[index] = firstVertice;
-                }
+                            if (firstVertice == Vector3.zero)
+                                firstVertice = vertices[index];
+                            else
+                            {
+                                vertices[index] = firstVertice;
+                            }
 
 
 
@@ -160,29 +152,9 @@ public class Loading : MonoBehaviour
                 }
             }
         }
-        for (int i = initialI; i < initialI + int.Parse(infos[1]);i++)
-            {
-
-           
-
-
-
-                string[] coords = splitContent[i].Split(" ");
-
-                triangles[compteur] = int.Parse(coords[1]);
-                triangles[compteur + 1] = int.Parse(coords[2]);
-                triangles[compteur + 2] = int.Parse(coords[3]);
-            
-                compteur += 3;
-
-            }
+ 
         
-=======
-            compteur++;
-        }
 
-        int initialI = int.Parse(infos[0]) + 2;
-        compteur = 0;
         for (int i = initialI; i < initialI + int.Parse(infos[1]);i++)
         {
             string[] coords = splitContent[i].Split(" ");
@@ -192,7 +164,6 @@ public class Loading : MonoBehaviour
             compteur += 3;
         }
 
->>>>>>> cbb1553346af07d307ce9b2ed0315d7371cf0f98
         Mesh msh = new Mesh();
 
         msh.vertices = vertices;

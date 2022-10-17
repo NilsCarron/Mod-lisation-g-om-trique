@@ -12,11 +12,7 @@ public class Simplification : MonoBehaviour
     {
 
 
-<<<<<<< HEAD
        Sphere orb1 = new Sphere( 3f, new Vector3(0f, 0f, 0f));
-=======
-       Sphere orb1 = new Sphere(  3f, new Vector3(0f, 0f, 0f));
->>>>>>> cbb1553346af07d307ce9b2ed0315d7371cf0f98
        Sphere orb2 = new Sphere( 6f, new Vector3(15f, 10f, 10f));
        Sphere orb3 = new Sphere( 5f, new Vector3(20f, 25f, 35f));
 
