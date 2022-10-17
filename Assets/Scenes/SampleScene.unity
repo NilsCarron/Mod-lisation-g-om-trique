@@ -323,8 +323,11 @@ GameObject:
   - component: {fileID: 1804111263}
   - component: {fileID: 1804111262}
   - component: {fileID: 1804111265}
+<<<<<<< HEAD
   - component: {fileID: 1804111266}
 >>>>>>> cbb1553346af07d307ce9b2ed0315d7371cf0f98
+=======
+>>>>>>> parent of cbb1553 (Multiple shpere simplification)
   m_Layer: 0
   m_Name: Game Object (2)
   m_TagString: Untagged
@@ -342,14 +345,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804111259}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &1804111262
 >>>>>>> cbb1553346af07d307ce9b2ed0315d7371cf0f98
 MonoBehaviour:
@@ -499,6 +502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mat: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &1179622835
 =======
 --- !u!114 &1804111266
@@ -584,3 +588,5 @@ MonoBehaviour:
   file: {fileID: 4900000, guid: c5c3ea660f4bd9a40ab4a204441bf9b5, type: 3}
   mat: {fileID: 10756, guid: 0000000000000000e000000000000000, type: 0}
 >>>>>>> cbb1553346af07d307ce9b2ed0315d7371cf0f98
+=======
+>>>>>>> parent of cbb1553 (Multiple shpere simplification)
