@@ -9,6 +9,7 @@ public class Simplification : MonoBehaviour
     void Start()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
        Sphere orb1 = new Sphere( 3f, new Vector3(0f, 0f, 0f));
@@ -30,6 +31,11 @@ public class Simplification : MonoBehaviour
         float rayon = 3f;
         DrawSimplifiedSphere(centre, rayon, mat, 0.2f); 
 >>>>>>> parent of cbb1553 (Multiple shpere simplification)
+=======
+        Vector3 centre = new(6f, 6f, 6f);
+        float rayon = 3f;
+        DrawSimplifiedSphere(centre, rayon, mat, 0.2f); 
+>>>>>>> parent of 0bde46b (Simplification not working)
     }
 
     public void DrawSimplifiedSphere(Vector3 centre, float rayon , Material mat, float arete)
