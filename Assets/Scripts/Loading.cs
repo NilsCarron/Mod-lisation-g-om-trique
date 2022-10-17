@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static System.Math;
 
 public class Loading : MonoBehaviour
 {
