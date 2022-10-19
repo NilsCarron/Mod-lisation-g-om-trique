@@ -339,7 +339,7 @@ MonoBehaviour:
   pointPositif: {x: 0, y: 0, z: 0}
   pointNegatif: {x: 0, y: 0, z: 0}
   simplified: 1
-  nbCubes: 250000
+  nbCubes: 20
 --- !u!114 &1065336927
 MonoBehaviour:
   m_ObjectHideFlags: 0
