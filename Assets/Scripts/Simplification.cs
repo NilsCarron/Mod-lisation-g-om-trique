@@ -6,10 +6,19 @@ using static System.Math;
 public class Simplification : MonoBehaviour
 {
     [SerializeField] private Material mat;
+    public bool intersection;
+    public List<GameObject> listOfCubesCenter = new List<GameObject>();
+
+    public GameObject erasor;
+
 
     // Start is called before the first frame update
     void Start()
     {
+
+
+
+
 
 
         Sphere orb1 = new Sphere(3f, new Vector3(0f, 0f, 0f));
@@ -25,10 +34,30 @@ public class Simplification : MonoBehaviour
 
 
 
+}
+
+
+
+
+    void Update()
+    {
+        foreach(GameObject cube in listOfCubesCenter)
+        {
+            Debug.Log(erasor.transform.position);
+            if (Abs(Vector3.Distance(cube.transform.position, erasor.transform.position)) < 5)
+            {
+                GameObject.Destroy(cube);
+            }
+
+        }
+
 
     }
 
-    public struct Sphere
+
+
+
+public struct Sphere
     {
         public float rayon;
         public Vector3 position;
@@ -98,14 +127,38 @@ public class Simplification : MonoBehaviour
                 for (int indexX = (int)BoxExtremites[0].x - 1; indexX < (int)BoxExtremites[1].x - 1; indexX++)
                 {
 
+                    bool oneIntersection = false;
                     foreach (Sphere orb in spheres)
                     {
+
                         coordonneesCentreBox.x = indexX;
                         coordonneesCentreBox.y = indexY;
                         coordonneesCentreBox.z = indexZ;
 
+                        if (!intersection)
+                        {
+                            if (Abs(Vector3.Distance(coordonneesCentreBox, orb.position)) < orb.rayon)
+                            {
+                                GenerateCube(coordonneesCentreBox, 0.5f);
+                            }
+                        }
+                        else
+                            
+                        {
+                            if (Abs(Vector3.Distance(coordonneesCentreBox, orb.position)) < orb.rayon)
+                            {
+                                if (oneIntersection)
+                                {
+                                    GenerateCube(coordonneesCentreBox, 0.5f);
+                                }
+                                else
+                                {
+                                    oneIntersection = true;
+                                }
+                            }
 
-                        CollisionCube(orb, coordonneesCentreBox);
+
+                        }
                     }
                 }
             }
@@ -113,21 +166,11 @@ public class Simplification : MonoBehaviour
 
     }
 
-    private void CollisionCube(Sphere orb, Vector3 coordonneesCentreBox)
-    {
-        if (Abs(Vector3.Distance(coordonneesCentreBox, orb.position)) < orb.rayon)
-        {
-            GenerateCube(coordonneesCentreBox, 0.5f);
-        }
-
-
-    }
 
     public void GenerateCube(Vector3 coordonneesBox, float tailleCube)
     {
 
         {
-
             DrawCube(coordonneesBox, tailleCube, mat);
 
         }
@@ -142,6 +185,7 @@ public class Simplification : MonoBehaviour
 
         cube.AddComponent<MeshFilter>();
         cube.AddComponent<MeshRenderer>();
+        listOfCubesCenter.Add(cube);
 
 
 
