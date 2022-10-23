@@ -7,7 +7,8 @@ public class Simplification : MonoBehaviour
 {
     [SerializeField] private Material mat;
     public bool intersection;
-    public List<GameObject> listOfCubesCenter = new List<GameObject>();
+    public List<GameObject> listOfCubes = new List<GameObject>();
+    public List<Vector3> listOfCubesCenter = new List<Vector3>();
 
     public GameObject erasor;
 
@@ -41,12 +42,19 @@ public class Simplification : MonoBehaviour
 
     void Update()
     {
-        foreach(GameObject cube in listOfCubesCenter)
+        for( int index =0 ; index < listOfCubesCenter.Count; index++)
         {
-            Debug.Log(erasor.transform.position);
-            if (Abs(Vector3.Distance(cube.transform.position, erasor.transform.position)) < 5)
+            if (Abs(Vector3.Distance(listOfCubesCenter[index], erasor.transform.position)) < 5)
             {
-                GameObject.Destroy(cube);
+                GameObject.Destroy(listOfCubes[index]);
+                
+                listOfCubes.RemoveAt(index);
+
+                
+                listOfCubesCenter.RemoveAt(index);
+
+                index--;
+
             }
 
         }
@@ -171,6 +179,8 @@ public struct Sphere
     {
 
         {
+            listOfCubesCenter.Add(coordonneesBox);
+
             DrawCube(coordonneesBox, tailleCube, mat);
 
         }
@@ -182,11 +192,10 @@ public struct Sphere
 
 
         cube = new GameObject("Cube");
-
         cube.AddComponent<MeshFilter>();
         cube.AddComponent<MeshRenderer>();
-        listOfCubesCenter.Add(cube);
 
+        listOfCubes.Add(cube);
 
 
         vertices = new Vector3[8];

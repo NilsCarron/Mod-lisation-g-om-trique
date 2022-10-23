@@ -335,11 +335,7 @@ MonoBehaviour:
   mat: {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
   pointPositif: {x: 0, y: 0, z: 0}
   pointNegatif: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-  nbCubes: 25
-=======
   nbCubes: 5
->>>>>>> cbb454fa9b7c89c61156d9315e86df44f234e0e4
 --- !u!4 &1082234367
 Transform:
   m_ObjectHideFlags: 0

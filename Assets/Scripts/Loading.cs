@@ -191,7 +191,7 @@ public class Loading : MonoBehaviour
     public void Save()
     {       
 
-        string path = Application.persistentDataPath + "/objectBroken.txt";
+        string path = Application.persistentDataPath + "/Simplified.off.txt";
         Debug.Log(path);
 
         if (File.Exists(path))
