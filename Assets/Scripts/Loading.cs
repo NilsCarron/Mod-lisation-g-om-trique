@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -14,12 +15,12 @@ public class Loading : MonoBehaviour
     public Vector3 pointNegatif;
     public int nbCubes;
     
-    
+
     private List<Vector3> normales = new List<Vector3>();
 
-    
-    
-    
+
+
+
     private void Start()
     {
         
